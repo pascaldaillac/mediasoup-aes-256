@@ -1,5 +1,5 @@
 {
-  "name": "mediasoup",
+  "name": "mediasoup-forced-aes256",
   "version": "3.10.4",
   "description": "Cutting Edge WebRTC Video Conferencing",
   "contributors": [
@@ -11,7 +11,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/versatica/mediasoup.git"
+    "url": "git+https://github.com/versatica/mediasoup.git"
   },
   "funding": {
     "type": "opencollective",
@@ -89,5 +89,12 @@
     "sctp": "^1.0.0",
     "tsc-watch": "^5.0.3",
     "typescript": "^4.7.4"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/versatica/mediasoup/issues"
+  },
+  "directories": {
+    "doc": "doc"
+  },
+  "author": "pascal n"
 }

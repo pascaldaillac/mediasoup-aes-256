@@ -299,7 +299,7 @@ fn create_enable_srtp_succeeds() {
     future::block_on(async move {
         let (_worker, router) = init().await;
 
-        // Use default cryptoSuite: 'AES_CM_128_HMAC_SHA1_80'.
+        // Use default cryptoSuite: 'AEAD_AES_256_GCM'.
         let transport1 = router
             .create_plain_transport({
                 let mut plain_transport_options = PlainTransportOptions::new(ListenIp {

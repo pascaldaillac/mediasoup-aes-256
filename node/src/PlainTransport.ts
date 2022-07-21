@@ -67,7 +67,7 @@ export type PlainTransportOptions =
 
 	/**
 	 * The SRTP crypto suite to be used if enableSrtp is set. Default
-	 * 'AES_CM_128_HMAC_SHA1_80'.
+	 * 'AEAD_AES_256_GCM'.
 	 */
 	srtpCryptoSuite?: SrtpCryptoSuite;
 

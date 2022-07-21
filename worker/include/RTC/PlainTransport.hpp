@@ -76,7 +76,7 @@ namespace RTC
 		struct sockaddr_storage remoteAddrStorage;
 		struct sockaddr_storage rtcpRemoteAddrStorage;
 		RTC::SrtpSession::CryptoSuite srtpCryptoSuite{
-			RTC::SrtpSession::CryptoSuite::AES_CM_128_HMAC_SHA1_80
+			RTC::SrtpSession::CryptoSuite::AEAD_AES_256_GCM
 		};
 		std::string srtpKey;
 		size_t srtpMasterLength{ 0 };

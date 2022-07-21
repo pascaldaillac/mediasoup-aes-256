@@ -473,7 +473,7 @@ export class Router extends EnhancedEventEmitter<RouterEvents>
 			maxSctpMessageSize = 262144,
 			sctpSendBufferSize = 262144,
 			enableSrtp = false,
-			srtpCryptoSuite = 'AES_CM_128_HMAC_SHA1_80',
+			srtpCryptoSuite = 'AEAD_AES_256_GCM',
 			appData
 		}: PlainTransportOptions
 	): Promise<PlainTransport>

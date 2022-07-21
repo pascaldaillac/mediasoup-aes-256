@@ -30,17 +30,11 @@ namespace RTC
 	// clang-format off
 	absl::flat_hash_map<std::string, RTC::SrtpSession::CryptoSuite> PlainTransport::string2SrtpCryptoSuite =
 	{
-		{ "AEAD_AES_256_GCM",        RTC::SrtpSession::CryptoSuite::AEAD_AES_256_GCM        },
-		{ "AEAD_AES_128_GCM",        RTC::SrtpSession::CryptoSuite::AEAD_AES_128_GCM        },
-		{ "AES_CM_128_HMAC_SHA1_80", RTC::SrtpSession::CryptoSuite::AES_CM_128_HMAC_SHA1_80 },
-		{ "AES_CM_128_HMAC_SHA1_32", RTC::SrtpSession::CryptoSuite::AES_CM_128_HMAC_SHA1_32 }
+		{ "AEAD_AES_256_GCM",        RTC::SrtpSession::CryptoSuite::AEAD_AES_256_GCM        }
 	};
 	absl::flat_hash_map<RTC::SrtpSession::CryptoSuite, std::string> PlainTransport::srtpCryptoSuite2String =
 	{
-		{ RTC::SrtpSession::CryptoSuite::AEAD_AES_256_GCM,        "AEAD_AES_256_GCM"        },
-		{ RTC::SrtpSession::CryptoSuite::AEAD_AES_128_GCM,        "AEAD_AES_128_GCM"        },
-		{ RTC::SrtpSession::CryptoSuite::AES_CM_128_HMAC_SHA1_80, "AES_CM_128_HMAC_SHA1_80" },
-		{ RTC::SrtpSession::CryptoSuite::AES_CM_128_HMAC_SHA1_32, "AES_CM_128_HMAC_SHA1_32" }
+		{ RTC::SrtpSession::CryptoSuite::AEAD_AES_256_GCM,        "AEAD_AES_256_GCM"        }
 	};
 
 	/* Instance methods. */
