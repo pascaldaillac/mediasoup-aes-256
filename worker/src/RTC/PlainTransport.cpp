@@ -136,35 +136,7 @@ namespace RTC
 			// NOTE: The SRTP crypto suite may change later on connect().
 			this->srtpCryptoSuite = it->second;
 
-			switch (this->srtpCryptoSuite)
-			{
-				case RTC::SrtpSession::CryptoSuite::AEAD_AES_256_GCM:
-				{
-					this->srtpMasterLength = SrtpAesGcm256MasterLength;
-
-					break;
-				}
-
-				case RTC::SrtpSession::CryptoSuite::AEAD_AES_128_GCM:
-				{
-					this->srtpMasterLength = SrtpAesGcm128MasterLength;
-
-					break;
-				}
-
-				case RTC::SrtpSession::CryptoSuite::AES_CM_128_HMAC_SHA1_80:
-				case RTC::SrtpSession::CryptoSuite::AES_CM_128_HMAC_SHA1_32:
-				{
-					this->srtpMasterLength = SrtpMasterLength;
-
-					break;
-				}
-
-				default:
-				{
-					MS_ABORT("unknown SRTP crypto suite");
-				}
-			}
+			this->srtpMasterLength = SrtpAesGcm256MasterLength;
 
 			this->srtpKey       = Utils::Crypto::GetRandomString(this->srtpMasterLength);
 			this->srtpKeyBase64 = Utils::String::Base64Encode(this->srtpKey);
@@ -389,35 +361,8 @@ namespace RTC
 						auto previousSrtpCryptoSuite = this->srtpCryptoSuite;
 						this->srtpCryptoSuite        = it->second;
 
-						switch (this->srtpCryptoSuite)
-						{
-							case RTC::SrtpSession::CryptoSuite::AEAD_AES_256_GCM:
-							{
-								this->srtpMasterLength = SrtpAesGcm256MasterLength;
-
-								break;
-							}
-
-							case RTC::SrtpSession::CryptoSuite::AEAD_AES_128_GCM:
-							{
-								this->srtpMasterLength = SrtpAesGcm128MasterLength;
-
-								break;
-							}
-
-							case RTC::SrtpSession::CryptoSuite::AES_CM_128_HMAC_SHA1_80:
-							case RTC::SrtpSession::CryptoSuite::AES_CM_128_HMAC_SHA1_32:
-							{
-								this->srtpMasterLength = SrtpMasterLength;
-
-								break;
-							}
-
-							default:
-							{
-								MS_ABORT("unknown SRTP crypto suite");
-							}
-						}
+						// Force aes_256 as srtp connection
+						this->srtpMasterLength = SrtpAesGcm256MasterLength;
 
 						// If the SRTP crypto suite changed we must regenerate our SRTP key.
 						if (this->srtpCryptoSuite != previousSrtpCryptoSuite)

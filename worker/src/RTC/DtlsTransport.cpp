@@ -1204,41 +1204,11 @@ namespace RTC
 		size_t srtpSaltLength{ 0 };
 		size_t srtpMasterLength{ 0 };
 
-		switch (srtpCryptoSuite)
-		{
-			case RTC::SrtpSession::CryptoSuite::AEAD_AES_256_GCM:
-			{
-				srtpKeyLength    = SrtpAesGcm256MasterKeyLength;
-				srtpSaltLength   = SrtpAesGcm256MasterSaltLength;
-				srtpMasterLength = SrtpAesGcm256MasterLength;
+		// Force aes_256
 
-				break;
-			}
-
-			case RTC::SrtpSession::CryptoSuite::AEAD_AES_128_GCM:
-			{
-				srtpKeyLength    = SrtpAesGcm128MasterKeyLength;
-				srtpSaltLength   = SrtpAesGcm128MasterSaltLength;
-				srtpMasterLength = SrtpAesGcm128MasterLength;
-
-				break;
-			}
-
-			case RTC::SrtpSession::CryptoSuite::AES_CM_128_HMAC_SHA1_80:
-			case RTC::SrtpSession::CryptoSuite::AES_CM_128_HMAC_SHA1_32:
-			{
-				srtpKeyLength    = SrtpMasterKeyLength;
-				srtpSaltLength   = SrtpMasterSaltLength;
-				srtpMasterLength = SrtpMasterLength;
-
-				break;
-			}
-
-			default:
-			{
-				MS_ABORT("unknown SRTP crypto suite");
-			}
-		}
+		srtpKeyLength    = SrtpAesGcm256MasterKeyLength;
+		srtpSaltLength   = SrtpAesGcm256MasterSaltLength;
+		srtpMasterLength = SrtpAesGcm256MasterLength;
 
 		auto* srtpMaterial = new uint8_t[srtpMasterLength * 2];
 		uint8_t* srtpLocalKey{ nullptr };

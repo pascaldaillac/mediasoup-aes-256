@@ -63,46 +63,8 @@ namespace RTC
 		// Set all policy fields to 0.
 		std::memset(&policy, 0, sizeof(srtp_policy_t));
 
-		switch (cryptoSuite)
-		{
-			case CryptoSuite::AEAD_AES_256_GCM:
-			{
-				srtp_crypto_policy_set_aes_gcm_256_16_auth(&policy.rtp);
-				srtp_crypto_policy_set_aes_gcm_256_16_auth(&policy.rtcp);
-
-				break;
-			}
-
-			case CryptoSuite::AEAD_AES_128_GCM:
-			{
-				srtp_crypto_policy_set_aes_gcm_128_16_auth(&policy.rtp);
-				srtp_crypto_policy_set_aes_gcm_128_16_auth(&policy.rtcp);
-
-				break;
-			}
-
-			case CryptoSuite::AES_CM_128_HMAC_SHA1_80:
-			{
-				srtp_crypto_policy_set_aes_cm_128_hmac_sha1_80(&policy.rtp);
-				srtp_crypto_policy_set_aes_cm_128_hmac_sha1_80(&policy.rtcp);
-
-				break;
-			}
-
-			case CryptoSuite::AES_CM_128_HMAC_SHA1_32:
-			{
-				srtp_crypto_policy_set_aes_cm_128_hmac_sha1_32(&policy.rtp);
-				// NOTE: Must be 80 for RTCP.
-				srtp_crypto_policy_set_aes_cm_128_hmac_sha1_80(&policy.rtcp);
-
-				break;
-			}
-
-			default:
-			{
-				MS_ABORT("unknown SRTP crypto suite");
-			}
-		}
+		srtp_crypto_policy_set_aes_gcm_256_16_auth(&policy.rtp);
+		srtp_crypto_policy_set_aes_gcm_256_16_auth(&policy.rtcp);
 
 		MS_ASSERT(
 		  (int)keyLen == policy.rtp.cipher_key_len,
